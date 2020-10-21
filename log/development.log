@@ -25791,3 +25791,353 @@ Processing by SetlistSongsController#show as HTML
 Completed 200 OK in 83ms (Views: 37.1ms | ActiveRecord: 2.8ms | Allocations: 20371)
 
 
+Started GET "/setlists" for ::1 at 2020-10-16 16:19:05 -0600
+Started GET "/songs" for ::1 at 2020-10-16 16:19:05 -0600
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by SetlistsController#index as */*
+Processing by SongsController#index as */*
+  [1m[36mSetlist Load (0.5ms)[0m  [1m[34mSELECT "setlists".* FROM "setlists"[0m
+  ↳ app/controllers/setlists_controller.rb:4:in `index'
+Completed 200 OK in 132ms (Views: 15.4ms | ActiveRecord: 1.7ms | Allocations: 9466)
+
+
+  [1m[36mSong Load (0.3ms)[0m  [1m[34mSELECT "songs".* FROM "songs"[0m
+  ↳ app/controllers/songs_controller.rb:4:in `index'
+Completed 200 OK in 116ms (Views: 17.6ms | ActiveRecord: 1.1ms | Allocations: 16121)
+
+
+Started POST "/setlist_songs" for ::1 at 2020-10-16 16:19:22 -0600
+Processing by SetlistSongsController#create as JSON
+  Parameters: {"setlist_id"=>"1", "song_id"=>"1", "setlist_song"=>{"song_id"=>"1", "setlist_id"=>"1"}}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/setlist_songs_controller.rb:15:in `create'
+  [1m[36mSong Load (0.2ms)[0m  [1m[34mSELECT "songs".* FROM "songs" WHERE "songs"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/setlist_songs_controller.rb:15:in `create'
+  [1m[36mSetlist Load (0.1ms)[0m  [1m[34mSELECT "setlists".* FROM "setlists" WHERE "setlists"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/setlist_songs_controller.rb:15:in `create'
+  [1m[36mSetlistSong Create (0.6ms)[0m  [1m[32mINSERT INTO "setlist_songs" ("song_id", "setlist_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["song_id", 1], ["setlist_id", 1], ["created_at", "2020-10-16 22:19:22.249421"], ["updated_at", "2020-10-16 22:19:22.249421"]]
+  ↳ app/controllers/setlist_songs_controller.rb:15:in `create'
+  [1m[35m (29.0ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/setlist_songs_controller.rb:15:in `create'
+Completed 200 OK in 116ms (Views: 0.9ms | ActiveRecord: 30.8ms | Allocations: 10474)
+
+
+Started POST "/setlist_songs" for ::1 at 2020-10-16 16:19:23 -0600
+Processing by SetlistSongsController#create as JSON
+  Parameters: {"setlist_id"=>"1", "song_id"=>"5", "setlist_song"=>{"song_id"=>"5", "setlist_id"=>"1"}}
+  [1m[35m (0.3ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/setlist_songs_controller.rb:15:in `create'
+  [1m[36mSong Load (0.3ms)[0m  [1m[34mSELECT "songs".* FROM "songs" WHERE "songs"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/setlist_songs_controller.rb:15:in `create'
+  [1m[36mSetlist Load (0.1ms)[0m  [1m[34mSELECT "setlists".* FROM "setlists" WHERE "setlists"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/setlist_songs_controller.rb:15:in `create'
+  [1m[36mSetlistSong Create (0.7ms)[0m  [1m[32mINSERT INTO "setlist_songs" ("song_id", "setlist_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["song_id", 5], ["setlist_id", 1], ["created_at", "2020-10-16 22:19:23.130189"], ["updated_at", "2020-10-16 22:19:23.130189"]]
+  ↳ app/controllers/setlist_songs_controller.rb:15:in `create'
+  [1m[35m (28.7ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/setlist_songs_controller.rb:15:in `create'
+Completed 200 OK in 41ms (Views: 0.7ms | ActiveRecord: 30.1ms | Allocations: 5495)
+
+
+Started DELETE "/setlists/10" for ::1 at 2020-10-16 16:19:30 -0600
+Processing by SetlistsController#destroy as JSON
+  Parameters: {"id"=>"10", "setlist"=>{}}
+  [1m[36mSetlist Load (0.2ms)[0m  [1m[34mSELECT "setlists".* FROM "setlists" WHERE "setlists"."id" = ? LIMIT ?[0m  [["id", 10], ["LIMIT", 1]]
+  ↳ app/controllers/setlists_controller.rb:28:in `destroy'
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/setlists_controller.rb:29:in `destroy'
+  [1m[36mSetlist Destroy (0.4ms)[0m  [1m[31mDELETE FROM "setlists" WHERE "setlists"."id" = ?[0m  [["id", 10]]
+  ↳ app/controllers/setlists_controller.rb:29:in `destroy'
+  [1m[35m (94.7ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/setlists_controller.rb:29:in `destroy'
+Completed 200 OK in 100ms (Views: 0.2ms | ActiveRecord: 95.4ms | Allocations: 2696)
+
+
+Started DELETE "/setlist_songs/40" for ::1 at 2020-10-16 16:19:39 -0600
+Processing by SetlistSongsController#destroy as JSON
+  Parameters: {"id"=>"40", "setlist_song"=>{"id"=>"40"}}
+  [1m[36mSetlistSong Load (0.4ms)[0m  [1m[34mSELECT "setlist_songs".* FROM "setlist_songs" WHERE "setlist_songs"."id" = ? LIMIT ?[0m  [["id", 40], ["LIMIT", 1]]
+  ↳ app/controllers/setlist_songs_controller.rb:23:in `destroy'
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/setlist_songs_controller.rb:24:in `destroy'
+  [1m[36mSetlistSong Destroy (0.7ms)[0m  [1m[31mDELETE FROM "setlist_songs" WHERE "setlist_songs"."id" = ?[0m  [["id", 40]]
+  ↳ app/controllers/setlist_songs_controller.rb:24:in `destroy'
+  [1m[35m (1.4ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/setlist_songs_controller.rb:24:in `destroy'
+  [1m[36mSong Load (0.2ms)[0m  [1m[34mSELECT "songs".* FROM "songs" WHERE "songs"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/serializers/setlist_song_serializer.rb:8:in `block in <class:SetlistSongSerializer>'
+  [1m[36mSetlist Load (0.2ms)[0m  [1m[34mSELECT "setlists".* FROM "setlists" WHERE "setlists"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/serializers/setlist_song_serializer.rb:12:in `block in <class:SetlistSongSerializer>'
+Completed 200 OK in 14ms (Views: 5.8ms | ActiveRecord: 2.9ms | Allocations: 4903)
+
+
+Started DELETE "/setlist_songs/undefined" for ::1 at 2020-10-16 16:19:52 -0600
+Processing by SetlistSongsController#destroy as JSON
+  Parameters: {"id"=>"undefined", "setlist_song"=>{}}
+  [1m[36mSetlistSong Load (0.2ms)[0m  [1m[34mSELECT "setlist_songs".* FROM "setlist_songs" WHERE "setlist_songs"."id" = ? LIMIT ?[0m  [["id", nil], ["LIMIT", 1]]
+  ↳ app/controllers/setlist_songs_controller.rb:23:in `destroy'
+Completed 500 Internal Server Error in 4ms (ActiveRecord: 0.2ms | Allocations: 1003)
+
+
+  
+NoMethodError (undefined method `destroy' for nil:NilClass):
+  
+app/controllers/setlist_songs_controller.rb:24:in `destroy'
+Started PATCH "/setlists/1" for ::1 at 2020-10-16 16:20:00 -0600
+Processing by SetlistsController#update as JSON
+  Parameters: {"date"=>"2020-08-08", "name"=>"Set 1", "id"=>"1", "setlist"=>{"id"=>"1", "date"=>"2020-08-08", "name"=>"Set 1"}}
+  [1m[36mSetlist Load (0.1ms)[0m  [1m[34mSELECT "setlists".* FROM "setlists" WHERE "setlists"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/setlists_controller.rb:13:in `update'
+Completed 200 OK in 2ms (Views: 0.3ms | ActiveRecord: 0.1ms | Allocations: 1176)
+
+
+Started DELETE "/setlist_songs/39" for ::1 at 2020-10-16 16:21:25 -0600
+Processing by SetlistSongsController#destroy as JSON
+  Parameters: {"id"=>"39", "setlist_song"=>{"id"=>"39"}}
+  [1m[36mSetlistSong Load (0.2ms)[0m  [1m[34mSELECT "setlist_songs".* FROM "setlist_songs" WHERE "setlist_songs"."id" = ? LIMIT ?[0m  [["id", 39], ["LIMIT", 1]]
+  ↳ app/controllers/setlist_songs_controller.rb:23:in `destroy'
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/setlist_songs_controller.rb:24:in `destroy'
+  [1m[36mSetlistSong Destroy (0.9ms)[0m  [1m[31mDELETE FROM "setlist_songs" WHERE "setlist_songs"."id" = ?[0m  [["id", 39]]
+  ↳ app/controllers/setlist_songs_controller.rb:24:in `destroy'
+  [1m[35m (1.8ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/setlist_songs_controller.rb:24:in `destroy'
+  [1m[36mSong Load (0.2ms)[0m  [1m[34mSELECT "songs".* FROM "songs" WHERE "songs"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/serializers/setlist_song_serializer.rb:8:in `block in <class:SetlistSongSerializer>'
+  [1m[36mSetlist Load (0.1ms)[0m  [1m[34mSELECT "setlists".* FROM "setlists" WHERE "setlists"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/serializers/setlist_song_serializer.rb:12:in `block in <class:SetlistSongSerializer>'
+Completed 200 OK in 12ms (Views: 3.2ms | ActiveRecord: 3.3ms | Allocations: 4300)
+
+
+Started DELETE "/setlist_songs/undefined" for ::1 at 2020-10-16 16:21:29 -0600
+Processing by SetlistSongsController#destroy as JSON
+  Parameters: {"id"=>"undefined", "setlist_song"=>{}}
+  [1m[36mSetlistSong Load (0.2ms)[0m  [1m[34mSELECT "setlist_songs".* FROM "setlist_songs" WHERE "setlist_songs"."id" = ? LIMIT ?[0m  [["id", nil], ["LIMIT", 1]]
+  ↳ app/controllers/setlist_songs_controller.rb:23:in `destroy'
+Completed 500 Internal Server Error in 3ms (ActiveRecord: 0.2ms | Allocations: 992)
+
+
+  
+NoMethodError (undefined method `destroy' for nil:NilClass):
+  
+app/controllers/setlist_songs_controller.rb:24:in `destroy'
+Started PATCH "/songs/18" for ::1 at 2020-10-16 16:21:31 -0600
+Processing by SongsController#update as JSON
+  Parameters: {"id"=>"18", "title"=>" Brown Eyed Girl ♦ Van Morrison ♦ G ♦ 120bpm ", "artist"=>"undefined", "key"=>"undefined", "song"=>{"id"=>"18", "title"=>" Brown Eyed Girl ♦ Van Morrison ♦ G ♦ 120bpm ", "artist"=>"undefined", "key"=>"undefined"}}
+  [1m[36mSong Load (0.2ms)[0m  [1m[34mSELECT "songs".* FROM "songs" WHERE "songs"."id" = ? LIMIT ?[0m  [["id", 18], ["LIMIT", 1]]
+  ↳ app/controllers/songs_controller.rb:22:in `update'
+[31mUnpermitted parameter: :id[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/songs_controller.rb:23:in `update'
+  [1m[36mSong Update (0.6ms)[0m  [1m[33mUPDATE "songs" SET "title" = ?, "artist" = ?, "key" = ?, "updated_at" = ? WHERE "songs"."id" = ?[0m  [["title", " Brown Eyed Girl ♦ Van Morrison ♦ G ♦ 120bpm "], ["artist", "undefined"], ["key", "undefined"], ["updated_at", "2020-10-16 22:21:31.296523"], ["id", 18]]
+  ↳ app/controllers/songs_controller.rb:23:in `update'
+  [1m[35m (1.4ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/songs_controller.rb:23:in `update'
+Completed 200 OK in 8ms (Views: 0.4ms | ActiveRecord: 2.2ms | Allocations: 3597)
+
+
+Started GET "/setlist_songs" for ::1 at 2020-10-21 11:46:26 -0600
+  [1m[35m (4.7ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (18.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by SetlistSongsController#index as HTML
+  [1m[36mSetlistSong Load (29.8ms)[0m  [1m[34mSELECT "setlist_songs".* FROM "setlist_songs"[0m
+  ↳ app/controllers/setlist_songs_controller.rb:4:in `index'
+  [1m[36mSong Load (12.5ms)[0m  [1m[34mSELECT "songs".* FROM "songs" WHERE "songs"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/serializers/setlist_song_serializer.rb:8:in `block in <class:SetlistSongSerializer>'
+  [1m[36mSetlist Load (0.4ms)[0m  [1m[34mSELECT "setlists".* FROM "setlists" WHERE "setlists"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/serializers/setlist_song_serializer.rb:12:in `block in <class:SetlistSongSerializer>'
+  [1m[36mCACHE Song Load (0.0ms)[0m  [1m[34mSELECT "songs".* FROM "songs" WHERE "songs"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/serializers/setlist_song_serializer.rb:8:in `block in <class:SetlistSongSerializer>'
+  [1m[36mCACHE Setlist Load (0.0ms)[0m  [1m[34mSELECT "setlists".* FROM "setlists" WHERE "setlists"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/serializers/setlist_song_serializer.rb:12:in `block in <class:SetlistSongSerializer>'
+  [1m[36mCACHE Song Load (0.0ms)[0m  [1m[34mSELECT "songs".* FROM "songs" WHERE "songs"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/serializers/setlist_song_serializer.rb:8:in `block in <class:SetlistSongSerializer>'
+  [1m[36mCACHE Setlist Load (0.0ms)[0m  [1m[34mSELECT "setlists".* FROM "setlists" WHERE "setlists"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/serializers/setlist_song_serializer.rb:12:in `block in <class:SetlistSongSerializer>'
+  [1m[36mCACHE Song Load (0.0ms)[0m  [1m[34mSELECT "songs".* FROM "songs" WHERE "songs"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/serializers/setlist_song_serializer.rb:8:in `block in <class:SetlistSongSerializer>'
+  [1m[36mCACHE Setlist Load (0.0ms)[0m  [1m[34mSELECT "setlists".* FROM "setlists" WHERE "setlists"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/serializers/setlist_song_serializer.rb:12:in `block in <class:SetlistSongSerializer>'
+  [1m[36mCACHE Song Load (0.0ms)[0m  [1m[34mSELECT "songs".* FROM "songs" WHERE "songs"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/serializers/setlist_song_serializer.rb:8:in `block in <class:SetlistSongSerializer>'
+  [1m[36mCACHE Setlist Load (0.0ms)[0m  [1m[34mSELECT "setlists".* FROM "setlists" WHERE "setlists"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/serializers/setlist_song_serializer.rb:12:in `block in <class:SetlistSongSerializer>'
+  [1m[36mCACHE Song Load (0.0ms)[0m  [1m[34mSELECT "songs".* FROM "songs" WHERE "songs"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/serializers/setlist_song_serializer.rb:8:in `block in <class:SetlistSongSerializer>'
+  [1m[36mCACHE Setlist Load (0.0ms)[0m  [1m[34mSELECT "setlists".* FROM "setlists" WHERE "setlists"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/serializers/setlist_song_serializer.rb:12:in `block in <class:SetlistSongSerializer>'
+  [1m[36mCACHE Song Load (0.0ms)[0m  [1m[34mSELECT "songs".* FROM "songs" WHERE "songs"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/serializers/setlist_song_serializer.rb:8:in `block in <class:SetlistSongSerializer>'
+  [1m[36mCACHE Setlist Load (0.0ms)[0m  [1m[34mSELECT "setlists".* FROM "setlists" WHERE "setlists"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/serializers/setlist_song_serializer.rb:12:in `block in <class:SetlistSongSerializer>'
+  [1m[36mCACHE Song Load (0.0ms)[0m  [1m[34mSELECT "songs".* FROM "songs" WHERE "songs"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/serializers/setlist_song_serializer.rb:8:in `block in <class:SetlistSongSerializer>'
+  [1m[36mCACHE Setlist Load (0.0ms)[0m  [1m[34mSELECT "setlists".* FROM "setlists" WHERE "setlists"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/serializers/setlist_song_serializer.rb:12:in `block in <class:SetlistSongSerializer>'
+  [1m[36mCACHE Song Load (0.0ms)[0m  [1m[34mSELECT "songs".* FROM "songs" WHERE "songs"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/serializers/setlist_song_serializer.rb:8:in `block in <class:SetlistSongSerializer>'
+  [1m[36mCACHE Setlist Load (0.0ms)[0m  [1m[34mSELECT "setlists".* FROM "setlists" WHERE "setlists"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/serializers/setlist_song_serializer.rb:12:in `block in <class:SetlistSongSerializer>'
+  [1m[36mSong Load (0.2ms)[0m  [1m[34mSELECT "songs".* FROM "songs" WHERE "songs"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/serializers/setlist_song_serializer.rb:8:in `block in <class:SetlistSongSerializer>'
+  [1m[36mCACHE Setlist Load (0.0ms)[0m  [1m[34mSELECT "setlists".* FROM "setlists" WHERE "setlists"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/serializers/setlist_song_serializer.rb:12:in `block in <class:SetlistSongSerializer>'
+  [1m[36mSong Load (0.1ms)[0m  [1m[34mSELECT "songs".* FROM "songs" WHERE "songs"."id" = ? LIMIT ?[0m  [["id", 11], ["LIMIT", 1]]
+  ↳ app/serializers/setlist_song_serializer.rb:8:in `block in <class:SetlistSongSerializer>'
+  [1m[36mSetlist Load (0.1ms)[0m  [1m[34mSELECT "setlists".* FROM "setlists" WHERE "setlists"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/serializers/setlist_song_serializer.rb:12:in `block in <class:SetlistSongSerializer>'
+  [1m[36mSong Load (0.1ms)[0m  [1m[34mSELECT "songs".* FROM "songs" WHERE "songs"."id" = ? LIMIT ?[0m  [["id", 17], ["LIMIT", 1]]
+  ↳ app/serializers/setlist_song_serializer.rb:8:in `block in <class:SetlistSongSerializer>'
+  [1m[36mCACHE Setlist Load (0.0ms)[0m  [1m[34mSELECT "setlists".* FROM "setlists" WHERE "setlists"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/serializers/setlist_song_serializer.rb:12:in `block in <class:SetlistSongSerializer>'
+  [1m[36mCACHE Song Load (0.0ms)[0m  [1m[34mSELECT "songs".* FROM "songs" WHERE "songs"."id" = ? LIMIT ?[0m  [["id", 17], ["LIMIT", 1]]
+  ↳ app/serializers/setlist_song_serializer.rb:8:in `block in <class:SetlistSongSerializer>'
+  [1m[36mCACHE Setlist Load (0.0ms)[0m  [1m[34mSELECT "setlists".* FROM "setlists" WHERE "setlists"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/serializers/setlist_song_serializer.rb:12:in `block in <class:SetlistSongSerializer>'
+  [1m[36mCACHE Song Load (0.0ms)[0m  [1m[34mSELECT "songs".* FROM "songs" WHERE "songs"."id" = ? LIMIT ?[0m  [["id", 17], ["LIMIT", 1]]
+  ↳ app/serializers/setlist_song_serializer.rb:8:in `block in <class:SetlistSongSerializer>'
+  [1m[36mCACHE Setlist Load (0.0ms)[0m  [1m[34mSELECT "setlists".* FROM "setlists" WHERE "setlists"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/serializers/setlist_song_serializer.rb:12:in `block in <class:SetlistSongSerializer>'
+  [1m[36mSong Load (0.1ms)[0m  [1m[34mSELECT "songs".* FROM "songs" WHERE "songs"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/serializers/setlist_song_serializer.rb:8:in `block in <class:SetlistSongSerializer>'
+  [1m[36mSetlist Load (0.1ms)[0m  [1m[34mSELECT "setlists".* FROM "setlists" WHERE "setlists"."id" = ? LIMIT ?[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/serializers/setlist_song_serializer.rb:12:in `block in <class:SetlistSongSerializer>'
+  [1m[36mCACHE Song Load (0.0ms)[0m  [1m[34mSELECT "songs".* FROM "songs" WHERE "songs"."id" = ? LIMIT ?[0m  [["id", 17], ["LIMIT", 1]]
+  ↳ app/serializers/setlist_song_serializer.rb:8:in `block in <class:SetlistSongSerializer>'
+  [1m[36mCACHE Setlist Load (0.0ms)[0m  [1m[34mSELECT "setlists".* FROM "setlists" WHERE "setlists"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/serializers/setlist_song_serializer.rb:12:in `block in <class:SetlistSongSerializer>'
+  [1m[36mSong Load (0.1ms)[0m  [1m[34mSELECT "songs".* FROM "songs" WHERE "songs"."id" = ? LIMIT ?[0m  [["id", 16], ["LIMIT", 1]]
+  ↳ app/serializers/setlist_song_serializer.rb:8:in `block in <class:SetlistSongSerializer>'
+  [1m[36mSetlist Load (0.1ms)[0m  [1m[34mSELECT "setlists".* FROM "setlists" WHERE "setlists"."id" = ? LIMIT ?[0m  [["id", 7], ["LIMIT", 1]]
+  ↳ app/serializers/setlist_song_serializer.rb:12:in `block in <class:SetlistSongSerializer>'
+  [1m[36mCACHE Song Load (0.0ms)[0m  [1m[34mSELECT "songs".* FROM "songs" WHERE "songs"."id" = ? LIMIT ?[0m  [["id", 16], ["LIMIT", 1]]
+  ↳ app/serializers/setlist_song_serializer.rb:8:in `block in <class:SetlistSongSerializer>'
+  [1m[36mCACHE Setlist Load (0.0ms)[0m  [1m[34mSELECT "setlists".* FROM "setlists" WHERE "setlists"."id" = ? LIMIT ?[0m  [["id", 7], ["LIMIT", 1]]
+  ↳ app/serializers/setlist_song_serializer.rb:12:in `block in <class:SetlistSongSerializer>'
+  [1m[36mCACHE Song Load (0.0ms)[0m  [1m[34mSELECT "songs".* FROM "songs" WHERE "songs"."id" = ? LIMIT ?[0m  [["id", 16], ["LIMIT", 1]]
+  ↳ app/serializers/setlist_song_serializer.rb:8:in `block in <class:SetlistSongSerializer>'
+  [1m[36mCACHE Setlist Load (0.0ms)[0m  [1m[34mSELECT "setlists".* FROM "setlists" WHERE "setlists"."id" = ? LIMIT ?[0m  [["id", 7], ["LIMIT", 1]]
+  ↳ app/serializers/setlist_song_serializer.rb:12:in `block in <class:SetlistSongSerializer>'
+  [1m[36mCACHE Song Load (0.0ms)[0m  [1m[34mSELECT "songs".* FROM "songs" WHERE "songs"."id" = ? LIMIT ?[0m  [["id", 16], ["LIMIT", 1]]
+  ↳ app/serializers/setlist_song_serializer.rb:8:in `block in <class:SetlistSongSerializer>'
+  [1m[36mCACHE Setlist Load (0.0ms)[0m  [1m[34mSELECT "setlists".* FROM "setlists" WHERE "setlists"."id" = ? LIMIT ?[0m  [["id", 7], ["LIMIT", 1]]
+  ↳ app/serializers/setlist_song_serializer.rb:12:in `block in <class:SetlistSongSerializer>'
+  [1m[36mCACHE Song Load (0.0ms)[0m  [1m[34mSELECT "songs".* FROM "songs" WHERE "songs"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/serializers/setlist_song_serializer.rb:8:in `block in <class:SetlistSongSerializer>'
+  [1m[36mCACHE Setlist Load (0.0ms)[0m  [1m[34mSELECT "setlists".* FROM "setlists" WHERE "setlists"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/serializers/setlist_song_serializer.rb:12:in `block in <class:SetlistSongSerializer>'
+  [1m[36mCACHE Song Load (0.0ms)[0m  [1m[34mSELECT "songs".* FROM "songs" WHERE "songs"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/serializers/setlist_song_serializer.rb:8:in `block in <class:SetlistSongSerializer>'
+  [1m[36mCACHE Setlist Load (0.0ms)[0m  [1m[34mSELECT "setlists".* FROM "setlists" WHERE "setlists"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/serializers/setlist_song_serializer.rb:12:in `block in <class:SetlistSongSerializer>'
+  [1m[36mCACHE Song Load (0.0ms)[0m  [1m[34mSELECT "songs".* FROM "songs" WHERE "songs"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/serializers/setlist_song_serializer.rb:8:in `block in <class:SetlistSongSerializer>'
+  [1m[36mCACHE Setlist Load (0.0ms)[0m  [1m[34mSELECT "setlists".* FROM "setlists" WHERE "setlists"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/serializers/setlist_song_serializer.rb:12:in `block in <class:SetlistSongSerializer>'
+  [1m[36mCACHE Song Load (0.0ms)[0m  [1m[34mSELECT "songs".* FROM "songs" WHERE "songs"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/serializers/setlist_song_serializer.rb:8:in `block in <class:SetlistSongSerializer>'
+  [1m[36mCACHE Setlist Load (0.0ms)[0m  [1m[34mSELECT "setlists".* FROM "setlists" WHERE "setlists"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/serializers/setlist_song_serializer.rb:12:in `block in <class:SetlistSongSerializer>'
+  [1m[36mCACHE Song Load (0.0ms)[0m  [1m[34mSELECT "songs".* FROM "songs" WHERE "songs"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/serializers/setlist_song_serializer.rb:8:in `block in <class:SetlistSongSerializer>'
+  [1m[36mCACHE Setlist Load (0.0ms)[0m  [1m[34mSELECT "setlists".* FROM "setlists" WHERE "setlists"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/serializers/setlist_song_serializer.rb:12:in `block in <class:SetlistSongSerializer>'
+  [1m[36mCACHE Song Load (0.0ms)[0m  [1m[34mSELECT "songs".* FROM "songs" WHERE "songs"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/serializers/setlist_song_serializer.rb:8:in `block in <class:SetlistSongSerializer>'
+  [1m[36mCACHE Setlist Load (0.0ms)[0m  [1m[34mSELECT "setlists".* FROM "setlists" WHERE "setlists"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/serializers/setlist_song_serializer.rb:12:in `block in <class:SetlistSongSerializer>'
+  [1m[36mCACHE Song Load (0.0ms)[0m  [1m[34mSELECT "songs".* FROM "songs" WHERE "songs"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/serializers/setlist_song_serializer.rb:8:in `block in <class:SetlistSongSerializer>'
+  [1m[36mCACHE Setlist Load (0.0ms)[0m  [1m[34mSELECT "setlists".* FROM "setlists" WHERE "setlists"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/serializers/setlist_song_serializer.rb:12:in `block in <class:SetlistSongSerializer>'
+Completed 200 OK in 254ms (Views: 158.6ms | ActiveRecord: 46.2ms | Allocations: 65753)
+
+
+Started GET "/songs" for ::1 at 2020-10-21 11:46:33 -0600
+Processing by SongsController#index as HTML
+  [1m[36mSong Load (0.4ms)[0m  [1m[34mSELECT "songs".* FROM "songs"[0m
+  ↳ app/controllers/songs_controller.rb:4:in `index'
+Completed 200 OK in 21ms (Views: 19.1ms | ActiveRecord: 0.4ms | Allocations: 3894)
+
+
+Started GET "/songs" for ::1 at 2020-10-21 11:46:37 -0600
+Processing by SongsController#index as */*
+  [1m[36mSong Load (0.3ms)[0m  [1m[34mSELECT "songs".* FROM "songs"[0m
+  ↳ app/controllers/songs_controller.rb:4:in `index'
+Completed 200 OK in 4ms (Views: 3.5ms | ActiveRecord: 0.3ms | Allocations: 3700)
+
+
+Started GET "/setlists" for ::1 at 2020-10-21 11:46:37 -0600
+Processing by SetlistsController#index as */*
+  [1m[36mSetlist Load (0.3ms)[0m  [1m[34mSELECT "setlists".* FROM "setlists"[0m
+  ↳ app/controllers/setlists_controller.rb:4:in `index'
+Completed 200 OK in 14ms (Views: 2.3ms | ActiveRecord: 0.3ms | Allocations: 2044)
+
+
+Started GET "/setlists" for ::1 at 2020-10-21 11:47:00 -0600
+Started GET "/songs" for ::1 at 2020-10-21 11:47:00 -0600
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+Processing by SongsController#index as */*
+Processing by SetlistsController#index as */*
+  [1m[36mSong Load (0.2ms)[0m  [1m[34mSELECT "songs".* FROM "songs"[0m
+  ↳ app/controllers/songs_controller.rb:4:in `index'
+  [1m[36mSetlist Load (0.4ms)[0m  [1m[34mSELECT "setlists".* FROM "setlists"[0m
+Completed 200 OK in 11ms (Views: 10.1ms | ActiveRecord: 0.2ms | Allocations: 4094)
+
+
+  ↳ app/controllers/setlists_controller.rb:4:in `index'
+Completed 200 OK in 12ms (Views: 11.3ms | ActiveRecord: 0.4ms | Allocations: 5532)
+
+
+Started DELETE "/songs/18" for ::1 at 2020-10-21 11:47:35 -0600
+Processing by SongsController#destroy as JSON
+  Parameters: {"_json"=>"18", "id"=>"18", "song"=>{}}
+  [1m[36mSong Load (0.2ms)[0m  [1m[34mSELECT "songs".* FROM "songs" WHERE "songs"."id" = ? LIMIT ?[0m  [["id", 18], ["LIMIT", 1]]
+  ↳ app/controllers/songs_controller.rb:28:in `destroy'
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/songs_controller.rb:29:in `destroy'
+  [1m[36mSetlistSong Load (0.2ms)[0m  [1m[34mSELECT "setlist_songs".* FROM "setlist_songs" WHERE "setlist_songs"."song_id" = ?[0m  [["song_id", 18]]
+  ↳ app/controllers/songs_controller.rb:29:in `destroy'
+  [1m[36mSong Destroy (0.5ms)[0m  [1m[31mDELETE FROM "songs" WHERE "songs"."id" = ?[0m  [["id", 18]]
+  ↳ app/controllers/songs_controller.rb:29:in `destroy'
+  [1m[35m (25.3ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/songs_controller.rb:29:in `destroy'
+Completed 200 OK in 121ms (Views: 0.3ms | ActiveRecord: 26.3ms | Allocations: 6109)
+
+
+Started POST "/setlist_songs" for ::1 at 2020-10-21 11:47:42 -0600
+Processing by SetlistSongsController#create as JSON
+  Parameters: {"setlist_id"=>"1", "song_id"=>"1", "setlist_song"=>{"song_id"=>"1", "setlist_id"=>"1"}}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/setlist_songs_controller.rb:15:in `create'
+  [1m[36mSong Load (0.2ms)[0m  [1m[34mSELECT "songs".* FROM "songs" WHERE "songs"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/setlist_songs_controller.rb:15:in `create'
+  [1m[36mSetlist Load (0.2ms)[0m  [1m[34mSELECT "setlists".* FROM "setlists" WHERE "setlists"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/setlist_songs_controller.rb:15:in `create'
+  [1m[36mSetlistSong Create (0.6ms)[0m  [1m[32mINSERT INTO "setlist_songs" ("song_id", "setlist_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["song_id", 1], ["setlist_id", 1], ["created_at", "2020-10-21 17:47:42.024606"], ["updated_at", "2020-10-21 17:47:42.024606"]]
+  ↳ app/controllers/setlist_songs_controller.rb:15:in `create'
+  [1m[35m (1.3ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/setlist_songs_controller.rb:15:in `create'
+Completed 200 OK in 12ms (Views: 0.8ms | ActiveRecord: 2.5ms | Allocations: 5301)
+
+
+Started DELETE "/setlist_songs/41" for ::1 at 2020-10-21 11:47:44 -0600
+Processing by SetlistSongsController#destroy as JSON
+  Parameters: {"id"=>"41", "setlist_song"=>{"id"=>"41"}}
+  [1m[36mSetlistSong Load (0.4ms)[0m  [1m[34mSELECT "setlist_songs".* FROM "setlist_songs" WHERE "setlist_songs"."id" = ? LIMIT ?[0m  [["id", 41], ["LIMIT", 1]]
+  ↳ app/controllers/setlist_songs_controller.rb:23:in `destroy'
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/setlist_songs_controller.rb:24:in `destroy'
+  [1m[36mSetlistSong Destroy (1.0ms)[0m  [1m[31mDELETE FROM "setlist_songs" WHERE "setlist_songs"."id" = ?[0m  [["id", 41]]
+  ↳ app/controllers/setlist_songs_controller.rb:24:in `destroy'
+  [1m[35m (1.5ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/setlist_songs_controller.rb:24:in `destroy'
+  [1m[36mSong Load (0.2ms)[0m  [1m[34mSELECT "songs".* FROM "songs" WHERE "songs"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/serializers/setlist_song_serializer.rb:8:in `block in <class:SetlistSongSerializer>'
+  [1m[36mSetlist Load (0.1ms)[0m  [1m[34mSELECT "setlists".* FROM "setlists" WHERE "setlists"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/serializers/setlist_song_serializer.rb:12:in `block in <class:SetlistSongSerializer>'
+Completed 200 OK in 12ms (Views: 2.9ms | ActiveRecord: 3.3ms | Allocations: 4469)
+
+
